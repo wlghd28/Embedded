@@ -28,3 +28,8 @@
 - SD card 또는 eMMC 메모리카드에 OS를 다운로드후 부팅 가능.
 - 파워 어댑터는 5V/4A를 요구한다 또는 Smart Power2 사용 가능.
 - uBoot(https://github.com/hardkernel/u-boot/tree/odroidxu4-v2017.05 에서 다운가능) 코드를 컴파일해서 기본적인 부팅을 할 수 있다. 
+
+* 부팅
+- SD card 또는 eMMC 모듈을 통해 부팅 가능
+- SD card 또는 eMMC 모듈에 우분투 OS 부트 이미지를 Write 해야 한다. (Write할 때 win32diskimager 프로그램 사용)
+- Write를 완료한 SD card 또는 eMMC 모듈을 장치에 장착 후 부팅한다.
