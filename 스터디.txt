@@ -31,3 +31,7 @@
 - SD card 또는 eMMC 모듈을 통해 부팅 가능
 - SD card 또는 eMMC 모듈에 우분투 OS 부트 이미지를 Write 해야 한다. (Write할 때 win32diskimager 또는 balenaEtcher 프로그램 사용)
 - Write를 완료한 SD card 또는 eMMC 모듈을 장치에 장착 후 부팅한다.
+
+* 부팅
+- 윈도우에선 boot.ini 파일 리눅스에선 lilo, grub 파일이 있음.
+- 각 부팅 파일의 경로가 정확해야 부팅이 가능함.
