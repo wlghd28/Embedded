@@ -32,8 +32,11 @@
 - SD card 또는 eMMC 모듈에 우분투 OS 부트 이미지를 Write 해야 한다. (Write할 때 win32diskimager 또는 balenaEtcher 프로그램 사용)
 - Write를 완료한 SD card 또는 eMMC 모듈을 장치에 장착 후 부팅한다.
 
+
 * 부팅
 - 윈도우에선 boot.ini 파일 리눅스에선 lilo, grub 파일이 있음.
 - 각 부팅 파일의 경로가 정확해야 부팅이 가능함.
 - ubuntu 버전도 장비와 맞아야 한다. (중요!!)
 - 모니터에 화면을 띄우려면 boot.ini 파일에서 자기가 쓸 모니터의 해상도를 파악하고 그에 맞는 부분의 주석을 풀어야 한다. (HDMI, DVI 선택)
+- 최근 Android는 linux의 kernel을 포함해서 나옴.
+- SD card에 write된 boot img 파일들을 다시 압축해서 .img파일로 추출하려면 DD for Windows 프로그램을 활용한다.
