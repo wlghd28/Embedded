@@ -40,3 +40,4 @@
 - 모니터에 화면을 띄우려면 boot.ini 파일에서 자기가 쓸 모니터의 해상도를 파악하고 그에 맞는 부분의 주석을 풀어야 한다. (HDMI, DVI 선택)
 - 최근 Android는 linux의 kernel을 포함해서 나옴.
 - SD card에 write된 boot img 파일들을 다시 압축해서 .img파일로 추출하려면 DD for Windows 프로그램을 활용한다.
+- Android는 SD card의 속도에 따라서 부팅시간이 30분까지도 걸릴 수 있다.
