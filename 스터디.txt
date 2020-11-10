@@ -22,6 +22,7 @@
 
 
 * ODROID-XU4
+- ARM CPU
 - 부팅하려면 SD card 또는 eMMC 메모리카드 필요.
 - 부팅모드는 SD card, eMMC 모드 2개가 있음.
 - SD card는 HDD(부팅속도 느림), eMMC는 SSD(부팅속도 빠름)라고 생각하면 된다.
@@ -31,7 +32,21 @@
 - SD card 또는 eMMC 모듈을 통해 부팅 가능
 - SD card 또는 eMMC 모듈에 우분투 OS 부트 이미지를 Write 해야 한다. (Write할 때 win32diskimager 또는 balenaEtcher 프로그램 사용)
 - Write를 완료한 SD card 또는 eMMC 모듈을 장치에 장착 후 부팅한다.
+- OS 종류에는 Android와 Ubuntu 등이 있다.
 
+* ODROID-XU4 game station Turbo
+- ODROID-XU4로 게임할 수 있도록 만든 OS이며 이 자체로 img파일이 있다.
+- img 파일을 SD card에 flash한 후 부팅가능.
+- 부팅후 OGST(Odroid Game Station Turbo) set up 과정
+  1) 차례대로 
+     sudo apt-get update -> y
+     sudo apt-get upgrade -> y (오래 걸릴 수 있음)
+     sudo apt-get dist-upgrade -> y
+     sudo reboot
+     명령어 실행
+  2) Setup Odroid Gamestation Trubo 프로그램 실행
+  3) 비밀번호 odroid 입력 후 Active console kit surpport 클릭 (console kit 사용 시 진행)
+- 게임 팩을 외부 장치에 넣어서 odroid/ROMS 폴더에 넣어주면 emulation이 게임을 인식한후 실행가능.
 
 * 부팅
 - 윈도우에선 boot.ini 파일 리눅스에선 lilo, grub 파일이 있음.
