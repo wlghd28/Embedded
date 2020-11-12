@@ -66,4 +66,9 @@
 - MAME를 Windows에서 빌드하기 위해선 MinGW GCC compiler 라는 프로그램이 필요하다. (MAME 공식 웹 사이트에서 다운로드 가능.)
 - Windows 용 MAME 개발 환경은 MinGW GCC 컴파일러, MSYS2 환경 (POSIX / Unix 호환성 계층) 및 Python 및 Git과 같은 다양한 유틸리티로 구성된다.
 - Windows에서 MAME 빌드에 대한 정보 (https://www.mamedev.org/tools/)
+- Ubuntu Linux 환경에서 MAME를 실행시키기 위해서 Universe라는 에뮬레이터가 필요하다.
+  설치 명령어 (차례대로 실행)
+  1) sudo add-apt-repository universe
+  2) sudo apt update
+  3) sudo apt install mame
 - Compiling MAME (https://docs.mamedev.org/initialsetup/compilingmame.html)
