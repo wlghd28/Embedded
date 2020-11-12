@@ -56,3 +56,14 @@
 - 최근 Android는 linux의 kernel을 포함해서 나옴.
 - SD card에 write된 boot img 파일들을 다시 압축해서 .img파일로 추출하려면 DD for Windows 프로그램을 활용한다.
 - Android는 SD card의 속도에 따라서 부팅시간이 30분까지도 걸릴 수 있다.
+
+* MAME
+- 다양한 게임을 하기 위한 목적으로 만들어진 에뮬레이션 프레임워크
+- rom 파일 형식으로 되어있는 게임 파일을 roms 폴더에 넣어서 게임 실행하는 구조
+- 실행파일 다운 or 오픈소스 다운 후 컴파일 가능
+- 깃주소 (https://github.com/mamedev/mame/)
+- rom 파일 형식으로 되어있는 게임 파일들도 각각 버전에 맞는 파일들이 존재한다. (즉, MAME에서 지원하는 버전에 맞는 게임 파일을 넣어야 실행 가능하다.)
+- MAME를 Windows에서 빌드하기 위해선 MinGW GCC compiler 라는 프로그램이 필요하다. (MAME 공식 웹 사이트에서 다운로드 가능.)
+- Windows 용 MAME 개발 환경은 MinGW GCC 컴파일러, MSYS2 환경 (POSIX / Unix 호환성 계층) 및 Python 및 Git과 같은 다양한 유틸리티로 구성된다.
+- Windows에서 MAME 빌드에 대한 정보 (https://www.mamedev.org/tools/)
+- Compiling MAME (https://docs.mamedev.org/initialsetup/compilingmame.html)
