@@ -127,4 +127,5 @@
   linux 장비등, 같은 모듈에서 동작하는 시스템이라면,
   같은 toolchain으로 빌드하여, glibc의존성 이슈등을 방지할 수 있다.
   (host, target이외에도 glibc같은 c library 종류도 설정할 수 있다.)
-- cygwin 활용
+- cygwin 활용 (cross compile to Linux from Windows)
+- mingw32 arm linux toolchain, cmake, mingw32-make 활용 (cross compile to ARM Linux from Windows)
