@@ -100,3 +100,31 @@
     2) (tab)목표를 달성하기 위한 명령 1
     3) (tab)목표를 달성하기 위한 명령 2
 - make clean 명령은 현재 디렉토리의 모든 object 파일들과 생성된 실행파일인 diary_exe를 rm 명령어로 제거해 준다.
+
+* Cross 컴파일
+- 다른 OS 기종 간에 호환을 위해서 나온 방법.
+- cross compile을 위한 toolchain이란?
+  기본적으로 gcc는 시스템 종속적(질문)으로 만들어지지 않았다.
+  그래서, gcc는 windows에서도, linux에서도, 기타 다른 플렛폼에서도 실행할 수 있다. (컴파일만 된다면) 
+  그리고, gcc가 빌드해서 산출하는 바이너리도 종속적(질문)으로 만들어지지 않았다.
+  그래서, gcc는 elf(.so)뿐만 아니라 .exe/.dll도 빌드할 수 있다.
+
+  이걸 정리하면,
+  gcc는
+  host : gcc를 실행하는 플렛폼
+  target : gcc가 생산하는 바이너리가 실행되는 플렛폼을 조합할 수 있다.
+  즉, 일반적인 ubuntu x86에 기본으로 들어 있는 gcc는 host가 linux x86, target은 linux x86이다.
+  만일, ubuntu x86에서 x86_64를 빌드하고 싶다면, host가 linux x86이고 target은 linux x86_64인 gcc를 실행해야 한다. 
+  만일, Windows에서 x86_64를 빌드하고 싶다면, host가 cygwin이고 target은 linux x86_64인 gcc를 실행하면 된다. 
+  (참고로, gcc는 c/c++ 뿐만 아니라 fortran같은 다른 언도도 지원할 수 있다)
+
+  이러한 gcc를 빌드하기 위해서는 수많은 input이 필요한데, 절차 또한 까다롭다.
+  이러한 불편한 것을 덜어주기 위해 toolchain-ng라는 툴이 있다.
+  해당 툴로 toolchain을 만들수 있다.
+
+  toolchain이란, 위 gcc같은 개발환경 set을 말한다.
+  즉, Windows에서 x86_64를 빌드하고 싶다면, 그에 맞는 gcc 셋, 즉, 툴체인이 필요한 것이다.
+  linux 장비등, 같은 모듈에서 동작하는 시스템이라면,
+  같은 toolchain으로 빌드하여, glibc의존성 이슈등을 방지할 수 있다.
+  (host, target이외에도 glibc같은 c library 종류도 설정할 수 있다.)
+- cygwin 활용
