@@ -34,6 +34,7 @@
 - Write를 완료한 SD card 또는 eMMC 모듈을 장치에 장착 후 부팅한다.
 - OS 종류에는 Android와 Ubuntu 등이 있다.
 
+
 * ODROID-XU4 game station Turbo
 - ODROID-XU4로 게임할 수 있도록 만든 OS이며 이 자체로 img파일이 있다.
 - img 파일을 SD card에 flash한 후 부팅가능.
@@ -48,6 +49,7 @@
   3) 비밀번호 odroid 입력 후 Active console kit surpport 클릭 (console kit 사용 시 진행)
 - 게임 팩을 외부 장치에 넣어서 odroid/ROMS 폴더에 넣어주면 emulation이 게임을 인식한후 실행가능.
 
+
 * 부팅
 - 윈도우에선 boot.ini 파일 리눅스에선 lilo, grub 파일이 있음.
 - 각 부팅 파일의 경로가 정확해야 부팅이 가능함.
@@ -56,6 +58,7 @@
 - 최근 Android는 linux의 kernel을 포함해서 나옴.
 - SD card에 write된 boot img 파일들을 다시 압축해서 .img파일로 추출하려면 DD for Windows 프로그램을 활용한다.
 - Android는 SD card의 속도에 따라서 부팅시간이 30분까지도 걸릴 수 있다.
+
 
 * MAME
 - 다양한 게임을 하기 위한 목적으로 만들어진 에뮬레이션 프레임워크
@@ -75,6 +78,7 @@
 - Compile 할 때 경고를 오류로 인식하여 컴파일이 멈추는 것을 방지하기 위해 make CFLAGS='-U_FORTIFY_SOURCE'로 명령한다.
 - Compile 결과 64비트 운영체제는 mame64, 32비트 운영체제는 mame 파일이 생성된다.
 - mame64, mame 실행파일을 실행하기 위해 ./mame64, ./mame 명령을 입력한다.
+
 
 * 컴파일
 - 관련자료 링크(https://bowbowbow.tistory.com/12)
@@ -119,6 +123,7 @@
     make에서 내부적으로 세팅되어 있는 값들을 출력한다. (-print-data-base)
     -k
     make는 에러가 발생하면 도중에 실행을 포기하게 되는데 (-keep-going) -k 는 에러가 나더라도 멈추지 말고 계속 진행하라는 뜻
+
 
 * Cross 컴파일
 - 다른 OS 기종 간에 호환을 위해서 나온 방법.
