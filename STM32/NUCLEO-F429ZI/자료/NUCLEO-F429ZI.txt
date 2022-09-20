@@ -1,0 +1,69 @@
+* Flash Memory Read/Write
+1. 읽는 과정
+	- 일반 메모리 읽는 것과 동일함
+	- ex) uint32_t value; value =*((uint32_t *)메모리주소);
+2. 쓰는 과정 4단계
+	- UnLock : HAL_FLASH_Unlock()
+	- Erase :  HAL_FLASHEx_Erase(), 지우는 단위는 sector단위 또는 칩 전체
+	- Program : HAL_FLASH_Program(), 쓰는 단위는 1byte, 2, 4, 8bytes 가능
+	- Lock : HAL_FLASH_Lock()
+
+3. EraseInitStruct 구조체
+	- 보통 메모리를 쓰는 과정 중 UnLock 단계와 Erase 단계 사이에서 초기화 해준다.
+	- EraseInitStruct.TypeErase = FLASH_TYPEERASE_SECTORS; (sector 단위로 지우겠다는 뜻)
+	- EraseInitStruct.VoltageRange = FLASH_VOLTAGE_RANGE_3; (보드의 전압설정??)
+	- EraseInitStruct.Sector = 지우고자 하는 섹터 시작 번호
+	- EraseInitStruct.NbSectors = 지우고자 하는 섹터 개수
+
+4.  ARM 프로세서의 default 메모리 형식은 리틀 엔디안 방식이다.
+	- 리틀 엔디안은 메모리의 Lower Address 에 LSB (최하위비트/Least Significant Bit) 부터 저장하는 방식이다.
+	- 빅 엔디안은 메모리의 Lower Address 에 MSB  (최상위비트/Most Significant Bit) 부터 저장하는 방식이다.
+	- 또 리틀 엔디안 방식인데 0x87654321 이 아니라 0x78563412 인 이유는, 컴퓨터가 데이터를 처리하는 최소 단위가 1byte이기 때문에 byte 가 쪼개지진 않는다.
+	-'안녕하세요'를 거꾸로 하면 '요세하녕안'이지 'ㅛㅇㅔㅅㅏㅎㅇㅕㄴㄴㅏㅇ'가 아닌것과 마찬가지이다.
+
+5. 예제코드
+	// 플래시 메모리 Unlock
+  	HAL_FLASH_Unlock();
+
+  	/* Get the 1st sector to erase */
+  
+  	// 첫번째 섹터와 지울 섹터 갯수를 구하고 FLASH_EraseInitTypeDef 구조체 안에 설정값을 저장한다.
+  	FirstSector = GetSector(FLASH_USER_START_ADDR);
+  	/* Get the number of sector to erase from 1st sector*/
+  	NbOfSectors = GetSector(FLASH_USER_END_ADDR) - FirstSector + 1;
+  	/* Fill EraseInit structure*/
+  	EraseInitStruct.TypeErase     = FLASH_TYPEERASE_SECTORS;
+  	EraseInitStruct.VoltageRange  = FLASH_VOLTAGE_RANGE_3;
+  	EraseInitStruct.Sector        = FirstSector;
+  	EraseInitStruct.NbSectors     = NbOfSectors;
+
+	// 플래시 메모리를 지우는 HAL 함수
+  	if(HAL_FLASHEx_Erase(&EraseInitStruct, &SECTORError) != HAL_OK)
+   	{
+
+   	}
+
+	// 다시 Address를 시작주소로 보낸다
+  	Address = FLASH_USER_START_ADDR;
+
+	// 마지막 주소 전까지 4byte 씩 증가하며 반복한다.
+  	while(Address < FLASH_USER_END_ADDR)
+  	{
+  		// 플래시 메모리에 쓰기 하는 HAL 함수, WORD 단위로 쓰고 쓰는 값은 0x12345678
+		if(HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, Address, DATA_32) == HAL_OK)
+		{	
+	  		Address = Address + 4;
+		}
+   		else
+		{
+	 	 	/* Error occurred while writing data in Flash memory.
+		 	User can add here some code to deal with this error */
+		}
+  	}
+
+  	/* Lock the Flash to disable the flash control register access (recommended to protect the FLASH memory against possible unwanted operation) *********/         
+     	// 위의 주석과 같은 이유로 다시 플래시 메모리를 Lock 한다.
+  	HAL_FLASH_Lock();
+
+
+* Ethernet 활용
